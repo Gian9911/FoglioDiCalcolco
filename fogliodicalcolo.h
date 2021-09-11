@@ -23,9 +23,16 @@ private:
     bool mulTrigger;
     bool subTrigger;
     bool addTrigger;
+    bool addMemory;
+    bool getMemory;
+    bool clrMemory;
 
 private slots:
-    //void MathButton();
+    void MathButton();
     void NumButton();
+    void Equals();
+    void ChangeSign();
+    void Memory();
+    void AC();
 };
 #endif // FOGLIODICALCOLO_H

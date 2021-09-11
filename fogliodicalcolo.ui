@@ -178,7 +178,7 @@ QPushButton:pressed{
      </widget>
     </item>
     <item row="4" column="4">
-     <widget class="QPushButton" name="pushButton_20">
+     <widget class="QPushButton" name="Equals">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
