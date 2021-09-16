@@ -1,4 +1,4 @@
-#include "fogliodicalcolo.h"
+#include "Fogliodicalcolo.h"
 
 #include <QApplication>
 
