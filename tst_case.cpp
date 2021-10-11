@@ -1,4 +1,4 @@
-i
+
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 #include"../Calcolatrice/listaoperazioni.h"
