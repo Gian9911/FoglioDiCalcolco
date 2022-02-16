@@ -11,24 +11,24 @@ class ListaOperazioni
 public:
     double sum(double a, double b){
         double r = 0.0;
-        if((a + b) <= std::numeric_limits<double>::max())
+        if((a + b) < std::numeric_limits<double>::max())
             r = a + b;
         else
              throw std::overflow_error("got overflow");
-        if((a + b) > r)
+        if((a + b) > std::numeric_limits<double>::max()*(-1))
             r = a + b;
-        else
+                    else
             throw std::underflow_error("got underflow");
         return r;
     }
 
     double sub(double a, double b){
-        double r = 0.0;
-        if((a - b) > std::numeric_limits<double>::max())
+        double r = a - b;
+        if(r < std::numeric_limits<double>::max())
             r = a - b;
         else
             throw std::overflow_error("got overflow");
-        if((a - b) >= std::numeric_limits<double>::min())
+        if(r > -(std::numeric_limits<double>::max()))
             r = a - b;
         else
             throw std::underflow_error("got underflow");
@@ -36,12 +36,12 @@ public:
     }
 
     double mul(double a, double b){
-        double r = 0.0;
-        if((a * b) <= std::numeric_limits<double>::max())
+        double r = a * b;
+        if(r < std::numeric_limits<double>::max())
             r = a * b;
         else
            throw std::overflow_error("got overflow");
-        if((a * b) > r)
+        if(r > -(std::numeric_limits<double>::max()))
             r = a * b;
         else
            throw std::underflow_error("got underflow");;
@@ -49,16 +49,15 @@ public:
     }
 
     double div(double a, double b){
-        double r = 0.0;
-        if (((a == 0) && (b == 0)) || (b == std::numeric_limits<double>::max()) || (b == std::numeric_limits<double>::min()) ||
-                ((a ==  std::numeric_limits<double>::infinity()) && (b == 0)) || ((a ==  std::numeric_limits<double>::infinity()) &&
-                (b ==  std::numeric_limits<double>::infinity())) || ((a == 0) && (b ==  std::numeric_limits<double>::infinity())))
+        double r = a / b;
+        if (a ==  std::numeric_limits<double>::infinity() || b == 0 || b ==  std::numeric_limits<double>::infinity() ||
+                b ==  std::numeric_limits<double>::infinity())
            throw std::exception();
-        if((a / b) <= std::numeric_limits<double>::max())
+        if(r < std::numeric_limits<double>::max())
                r = a / b;
         else
            throw std::overflow_error("got overflow");
-        if((a / b) > r)
+        if(r > -(std::numeric_limits<double>::max()))
            r = a / b ;
         else
            throw std::underflow_error("got underflow");

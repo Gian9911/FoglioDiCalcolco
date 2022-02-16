@@ -4,19 +4,25 @@
 
 #include <QMainWindow>
 #include <iostream>
+#include"memoriacalc.h"
 #include <limits>
+#include<list>
+#include"Observer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Calcolatrice; }
 QT_END_NAMESPACE
 
-class Calcolatrice : public QMainWindow
+class Calcolatrice : public QMainWindow, public Subject
 {
     Q_OBJECT
 
 public:
     Calcolatrice(QWidget *parent = nullptr);
-    ~Calcolatrice();
+    virtual ~Calcolatrice();
+    virtual void subscribe(Observer* observer) override;
+    virtual void unsubscribe(Observer* observer) override;
+    virtual void notify(QString item) override;
 
 private:
     Ui::Calcolatrice *ui;
@@ -34,6 +40,8 @@ private:
     bool degTrigger;
     bool sinTrigger;
     bool cosTrigger;
+    std::list<Observer*> observer;
+
 
 private slots:
     void MathButton();
